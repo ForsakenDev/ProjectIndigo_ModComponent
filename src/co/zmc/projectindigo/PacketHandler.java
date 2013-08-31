@@ -2,6 +2,7 @@ package co.zmc.projectindigo;
 
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.server.MinecraftServer;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 
@@ -10,11 +11,11 @@ public class PacketHandler implements IPacketHandler {
     private String getData() {
         String data = "{ \"name\": \"" + Main._instance.getServerName() + "\",";
         data += "\"ip\": \"" + Main._instance.getServerIP() + "\",";
+        data += "\"port\": \"" + MinecraftServer.getServer().getPort() + "\",";
         data += "\"logo\": \"" + Main._instance.getLogoURL() + "\",";
-        data += "\"modpack_host\": \"" + Main._instance.getPackHost() + "\",";
-        data += "\"modpack_name\": \"" + Main._instance.getPackName() + "\",";
-        data += "\"modpack_loc\": \"" + Main._instance.getPackLocation() + "\",";
-        data += "\"modpack_version\": \"" + Main._instance.getPackVersion() + "\" }";
+        data += "\"download_url\": \"" + Main._instance.getDownloadURL() + "\",";
+        data += "\"version\": \"" + Main._instance.getVersion() + "\",";
+        data += "\"mc_version\": \"" + MinecraftServer.getServer().getMinecraftVersion() + "\" }";
         return data;
     }
 

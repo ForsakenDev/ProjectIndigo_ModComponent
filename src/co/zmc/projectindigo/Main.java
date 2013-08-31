@@ -16,10 +16,8 @@ public class Main {
     private String     _serverName;
     private String     _serverIP;
     private String     _logoURL;
-    private String     _packHost;
-    private String     _packName;
-    private String     _packLocation;
-    private String     _packVersion;
+    private String     _downloadURL;
+    private String     _version;
 
     public String getServerName() {
         return _serverName;
@@ -33,20 +31,12 @@ public class Main {
         return _logoURL;
     }
 
-    public String getPackHost() {
-        return _packHost;
+    public String getDownloadURL() {
+        return _downloadURL;
     }
 
-    public String getPackName() {
-        return _packName;
-    }
-
-    public String getPackLocation() {
-        return _packLocation;
-    }
-
-    public String getPackVersion() {
-        return _packVersion;
+    public String getVersion() {
+        return _version;
     }
 
     @Mod.PreInit
@@ -60,11 +50,8 @@ public class Main {
                 .getString();
         _logoURL = config.get("Server", "logo", "http://example.com/example.png",
                 "Image you want to represent your server (Max size: 250px X 250px)").getString();
-        _packHost = config.get("Modpack", "host", "FTB", "The type of server this is (options: FTB/Technic/Custom)").getString();
-        _packName = config.get("Modpack", "name", "Unleashed", "Name of the modpack (FTB modpacks: (Unleashed)").getString();
-        _packLocation = config.get("Modpack", "url", "http://example.com/modpack.zip",
-                "Link to download the modpack (only needed for custom packs)").getString();
-        _packVersion = config.get("Modpack", "version", "1.0.0", "Version of the modpack").getString();
+        _downloadURL = config.get("Server", "download_url", "FTB", "Link to download the modpack").getString();
+        _version = config.get("Server", "version", "1.1.3", "Version of the modpack").getString();
         config.save();
     }
 
