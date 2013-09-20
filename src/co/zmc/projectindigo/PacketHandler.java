@@ -8,17 +8,6 @@ import cpw.mods.fml.common.network.Player;
 
 public class PacketHandler implements IPacketHandler {
 
-    private String getData() {
-        String data = "{ \"name\": \"" + Main._instance.getServerName() + "\",";
-        data += "\"ip\": \"" + Main._instance.getServerIP() + "\",";
-        data += "\"port\": \"" + MinecraftServer.getServer().getPort() + "\",";
-        data += "\"logo\": \"" + Main._instance.getLogoURL() + "\",";
-        data += "\"download_url\": \"" + Main._instance.getDownloadURL() + "\",";
-        data += "\"version\": \"" + Main._instance.getVersion() + "\",";
-        data += "\"mc_version\": \"" + MinecraftServer.getServer().getMinecraftVersion() + "\" }";
-        return data;
-    }
-
     @Override
     public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
         if (packet.channel.equals("projectindigo") && new String(packet.data).equalsIgnoreCase("request_modpack_url")) {
@@ -30,4 +19,11 @@ public class PacketHandler implements IPacketHandler {
         }
     }
 
+    private String getData() {
+        return "{" + "\"name\": \"" + Main._instance.getServerName() + "\"," + "\"ip\": \"" + Main._instance.getServerIP()
+                + "\"," + "\"port\": \"" + MinecraftServer.getServer().getPort() + "\"," + "\"logo\": \""
+                + Main._instance.getLogoURL() + "\"," + "\"download_url\": \"" + Main._instance.getDownloadURL() + "\","
+                + "\"version\": \"" + Main._instance.getVersion() + "\"," + "\"mc_version\": \""
+                + MinecraftServer.getServer().getMinecraftVersion() + "\"" + "}";
+    }
 }

@@ -50,8 +50,8 @@ public class Main {
                 .getString();
         _logoURL = config.get("Server", "logo", "http://example.com/example.png",
                 "Image you want to represent your server (Max size: 250px X 250px)").getString();
-        _downloadURL = config.get("Server", "download_url", "FTB", "Link to download the modpack").getString();
-        _version = config.get("Server", "version", "1.1.3", "Version of the modpack").getString();
+        _downloadURL = config.get("Server", "download_url", "http://example.com/modpack.zip", "Link to download the modpack").getString();
+        _version = config.get("Server", "version", "1.0.0", "Version of the modpack").getString();
         config.save();
     }
 
